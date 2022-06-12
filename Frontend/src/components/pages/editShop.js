@@ -10,6 +10,7 @@ import Header3 from '../Header3';
 import TextField from "@mui/material/TextField";
 import PersonIcon from '@mui/icons-material/Person';
 import { useLocation } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
 
 const useStyles = makeStyles(() => ({
 
@@ -98,7 +99,7 @@ export default function editShop() {
                     <Box height='2vw' minHeight='16px' />
                     <Grid align='center'>
                         <Avatar className={classes.avatarStyle}>
-                            <PersonIcon style={{ fontSize: '40px' }} />
+                            <HomeIcon style={{ fontSize: '40px' }} />
                         </Avatar>
                         <br />
                         <h1>Shop Details</h1>
@@ -112,19 +113,12 @@ export default function editShop() {
                         <Grid container spacing={2}>
                             <Grid item xs={12}
                                 style={{ marginBottom: "1em", display: 'flex', gap: '1em', alignItems: 'center'}}>
-                                <Typography style={{ alignItems: 'center', width: '35%', fontSize: '160%', fontWeight: 'bolder' }}>
+                                <Typography style={{ alignItems: 'center', width: '30%', fontSize: '160%', fontWeight: 'bolder' }}>
                                     Shop Name:
                                 </Typography>
-                                <TextField
-                                    fullWidth
-                                    value={shopName}
-                                    onChange={(e) => setShopName(e.target.value)}
-                                    InputProps={{ style: { fontSize: "160%" } }}
-                                    InputLabelProps={{ style: { fontSize: "160%" } }}
-                                    required
-                                    type="text"
-                                    label="User Shop Name"
-                                />
+                                <Typography style={{ alignItems: 'center', fontSize: '160%' }}>
+                                {shopName}
+                                </Typography>
                             </Grid>
                             <Grid item xs={12}
                                 style={{ marginBottom: "1em", display: 'flex', gap: '1em', alignItems: 'center'}}>
