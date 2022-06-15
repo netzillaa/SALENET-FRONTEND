@@ -12,6 +12,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 
 const styles = {
     link: {
@@ -39,6 +40,7 @@ const settings = [
     { name: 'Manage Product', link: '/manageProduct', icon: <InventoryIcon/> },
     { name: 'Edit Profile', link: '/editProfile?id='+ id, icon: <AccountCircleIcon/> },
     { name: 'Edit Shop Details', link: '/editShop?id='+ id, icon: <HomeIcon/> },
+    { name: 'Manage Invoice', link: '/manageInvoice?id='+ id, icon: <ReceiptLongIcon/> },
 ]
 
 export default class DrawerMenu extends React.Component {
