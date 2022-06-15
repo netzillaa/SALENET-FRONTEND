@@ -12,7 +12,6 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 
 const styles = {
     link: {
