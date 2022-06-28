@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
 
 }));
 
-export default function customerSupport() {
+export default function Footer_landing() {
 
     const classes = useStyles();
 

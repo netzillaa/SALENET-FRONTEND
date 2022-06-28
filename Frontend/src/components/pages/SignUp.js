@@ -3,8 +3,8 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import { makeStyles } from "@material-ui/core/styles";
+import { Card } from '@material-ui/core';
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -17,6 +17,19 @@ import Header2 from "../Header2";
 
 const theme = createTheme();
 
+const useStyles = makeStyles(() => ({
+
+  cardStyle: {
+      height: '50%',
+      width: '50%',
+      minWidth: '380px',
+      minHeight: '300px',
+      margin: 'auto',
+      padding: '3em 8em'
+  },
+}));
+
+
 export default function SignUp() {
   const [fullName, setFullName] = useState("");
   const [userName, setUserName] = useState("");
@@ -27,6 +40,7 @@ export default function SignUp() {
   const [shopAddress, setShopAddress] = useState("");
   const [businessLicense, setBusinessLicense] = useState("");
   const [phoneKey, setPhoneKey] = useState("");
+  const classes = useStyles();
 
 
   async function registerUser(event) {
@@ -77,20 +91,19 @@ export default function SignUp() {
   return (
     <ThemeProvider theme={theme}>
       <Header2 />
-      <Container component="main" maxWidth="xs">
+      <Container component="main">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            margin: 'auto',
+            marginTop: 8
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Card className={classes.cardStyle}>
+          <Avatar sx={{ m: 'auto', bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" align="center">
             Sign up
           </Typography>
           <Box
@@ -196,6 +209,7 @@ export default function SignUp() {
               </Grid>
             </Grid>
           </Box>
+          </Card>
         </Box>
       </Container>
     </ThemeProvider>

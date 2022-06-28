@@ -50,14 +50,17 @@ export default function editShop() {
     const [shopName, setShopName] = useState("");
     const [shopAddress, setShopAddress] = useState("");
     const [businessLicense, setBusinessLicense] = useState("");
+    const [id, setId] = useState("");
 
-    const search = useLocation().search;
-    const id = new URLSearchParams(search).get('id');
+    // const search = useLocation().search;
+    // const id = new URLSearchParams(search).get('id');
     const classes = useStyles();
 
     useEffect(() => {
         getUser();
-    }, []);
+        const id = localStorage.getItem('userId');
+        setId(id);
+    }, [id]);
 
     const getUser = async () => {
         await axios.get('http://localhost:4000/users/editUser/' + id ).then(res => {

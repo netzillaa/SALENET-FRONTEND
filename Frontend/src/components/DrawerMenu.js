@@ -28,8 +28,6 @@ const styles = {
     }
 };
 
-var id = localStorage.getItem('userId');
-
 const general = [
     { name: 'Dashboard', link: '/dashboard', icon: <DashboardIcon/> },
     { name: 'Transactions', link: '/transactions', icon: <ReceiptLongIcon/> },
@@ -37,9 +35,9 @@ const general = [
 
 const settings = [
     { name: 'Manage Product', link: '/manageProduct', icon: <InventoryIcon/> },
-    { name: 'Edit Profile', link: '/editProfile?id='+ id, icon: <AccountCircleIcon/> },
-    { name: 'Edit Shop Details', link: '/editShop?id='+ id, icon: <HomeIcon/> },
-    { name: 'Manage Invoice', link: '/manageInvoice?id='+ id, icon: <ReceiptLongIcon/> },
+    { name: 'Edit Profile', link: '/editProfile', icon: <AccountCircleIcon/> },
+    { name: 'Edit Shop Details', link: '/editShop', icon: <HomeIcon/> },
+    { name: 'Manage Invoice', link: '/manageInvoice', icon: <ReceiptLongIcon/> },
 ]
 
 export default class DrawerMenu extends React.Component {

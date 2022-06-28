@@ -79,24 +79,24 @@ export default function editProduct() {
     const update = async () => {
         console.log('checkingggggg ', productImage)
         // event.preventDefault();
-        var formData = new FormData(); 
-        formData.append('productName', productName);
-        formData.append('productPrice', productPrice);
-        formData.append('productCategory', productCategory);
-        formData.append('productImage', productImage);
-        formData.append('productQuantity', productQuantity);
-        console.log(formData);
-        console.log(productImage);
-        await axios.put("http://localhost:4000/products/update/" + id, formData).catch(err => {
-            console.log(err);
-        }
-        );
+        // var formData = new FormData(); 
+        // formData.append('productName', productName);
+        // formData.append('productPrice', productPrice);
+        // formData.append('productCategory', productCategory);
+        // formData.append('productImage', productImage);
+        // formData.append('productQuantity', productQuantity);
+        // console.log(formData);
+        // console.log(productImage);
+        // await axios.put("http://localhost:4000/products/update/" + id, formData).catch(err => {
+        //     console.log(err);
+        // }
+        // );
 
         console.log('updating product info ', productImage);
-        // await axios.post('http://localhost:4000/products/update/' + id, {productName, productPrice, productQuantity, productCategory, productImage}).then(res => {
-        // }).catch(err => {
-        //     console.log(err);
-        // })
+        await axios.post('http://localhost:4000/products/update/' + id, {productName, productPrice, productQuantity, productCategory, productImage}).then(res => {
+        }).catch(err => {
+            console.log(err);
+        })
     }
     
     const updateProduct = () => {
@@ -132,7 +132,7 @@ export default function editProduct() {
             <div style={{ paddingTop: '40px' }}>
                 <Card className={classes.cardStyle}>
                     <Box className={classes.pageTitle}>
-                        <h1>Edit Product</h1>
+                    <b style={{color:'white', fontSize:'20px'}}>Edit Products</b>
                     </Box>
                     <Box height='2vw' minHeight='16px' />
                     <EditImageModal image={oriImage} changeImage={changeImage}/>

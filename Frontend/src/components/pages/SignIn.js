@@ -14,14 +14,23 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
-import { Alert } from '@mui/material';
-import Stack from '@mui/material/Stack';
-import ErrorMessage from "../ErrorMessage";
 import Header2 from "../Header2";
-import Alerto from "./Alerto";
-import AlertoError from "./AlertoError";
+
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright Â© '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const theme = createTheme();
+
 export default function SignIn({ history }) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -80,55 +89,59 @@ export default function SignIn({ history }) {
       console.log(err);
     }
   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
+
   return (
-    <>
-      {/* {!success}(
-      <AlertoError /> */}
-      <ThemeProvider theme={theme}>
-        <Header2 />
-        <Grid container component="main" sx={{ height: "50rem" }}>
-          <CssBaseline />
-          <Grid
-            item
-            xs={false}
-            sm={4}
-            md={7}
+    <ThemeProvider theme={theme}>
+      <Header2/>
+      <Grid container component="main" sx={{ height: '100vh' }}>
+        <CssBaseline />
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            // backgroundImage: 'url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.iconsdb.com%2Ficons%2Fpreview%2Froyal-azure-blue%2Fshopping-basket-xxl.png&f=1&nofb=1)',
+            backgroundImage: 'url(images/pos.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: '90%',
+            backgroundPosition: 'center',
+          }}
+        />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box
             sx={{
-              // backgroundImage: "url(./)",
-              //we can get images from a website if we specify url like below
-              backgroundImage: "url(https://images.unsplash.com/photo-1648838775124-c69cda0203bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY0OTUyMTM4Mw&ixlib=rb-1.2.1&q=80&w=1080)",
-              backgroundRepeat: "no-repeat",
-              backgroundColor: (t) =>
-                t.palette.mode === "light"
-                  ? t.palette.grey[50]
-                  : t.palette.grey[900],
-              backgroundSize: "cover",
-              backgroundPosition: "center",
+              my: 8,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
-          />
-          <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          >
+            <Avatar sx={{ m: 1, bgcolor: '#000193' }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
             <Box
-              sx={{
-                my: 8,
-                mx: 4,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign in
-              </Typography>
-              <Box
                 component="form"
                 noValidate
                 onSubmit={signIn}
                 sx={{ mt: 1 }}
-              >
-                <TextField
+            >
+            <TextField
                   margin="normal"
                   required
                   fullWidth
@@ -140,7 +153,7 @@ export default function SignIn({ history }) {
                   autoComplete="email"
                   autoFocus
                 />
-                <TextField
+              <TextField
                   margin="normal"
                   required
                   fullWidth
@@ -152,35 +165,35 @@ export default function SignIn({ history }) {
                   id="password"
                   autoComplete="current-password"
                 />
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Sign In
-                </Button>
-                <Grid container>
-                  <Grid item xs>
-                    <Link href="#" variant="body2">
-                      Forgot password?
-                    </Link>
-                  </Grid>
-                  <Grid item>
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
                     <Link href="/register" variant="body2">
                       {"Don't have an account? Sign Up"}
                     </Link>
                   </Grid>
-                </Grid>
-              </Box>
+              </Grid>
+              <Copyright sx={{ mt: 5 }} />
             </Box>
-          </Grid>
+          </Box>
         </Grid>
-      </ThemeProvider>
-      {/* ) */}
-    </>);
+      </Grid>
+    </ThemeProvider>
+  );
 }

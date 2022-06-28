@@ -12,6 +12,7 @@ import Alerto from "./Alerto";
 import Stack from '@mui/material/Stack';
 import AlertoError from "./AlertoError";
 import Header2 from '../Header2';
+import Footer from '../Footer_landing';
 
 const useStyles = makeStyles(() => ({
 
@@ -80,6 +81,7 @@ export default function Verification({ history }) {
 
     const [authCode, setAuthCode] = useState();
     const [userCode, setUserCode] = useState();
+    let email = localStorage.getItem("email")
 
     const handleSubmit = () => {
         if (authCode == userCode) {
@@ -90,9 +92,6 @@ export default function Verification({ history }) {
             return false;
         }
     }
-
-
-    const [counter, setCounter] = useState(15);
 
     const getAuthCode = async () => {
         let email = localStorage.getItem("email")
@@ -122,7 +121,7 @@ export default function Verification({ history }) {
                     </Avatar>
                     <h2>Verify Your Email Address</h2><br/><br/>
                     <h4>
-                        We've sent you an email to <b>example@example.com</b> to verify your
+                        We've sent you an email to <b>{email}</b> to verify your
                         email address and activate your account.
                     </h4> <br />
                 </Grid>
@@ -142,18 +141,11 @@ export default function Verification({ history }) {
 
                     <button type='submit' className={classes.btnstyle}>VERIFY</button>
                 </ValidatorForm>
-                <Box mt={3} >
-                    <h4 style={{ textAlign: 'center' }}>
-                        Resend code in
-                        <span style={{ fontWeight: "bold" }}> 00:{counter}</span>
-                    </h4>
-                </Box>
-
-                <h4 style={{ textAlign: 'center' }}>
-                    <Link to="verify"> Resend Code </Link>
-                </h4>
-
+                
             </Paper>
+            {/* <Box> */}
+                <Footer/>
+            {/* </Box> */}
         </div>
         </>
     )

@@ -43,6 +43,8 @@ const useStyles = makeStyles(() => ({
 
 }));
 
+// const id = localStorage.getItem('userId');
+
 export default function editUserProfile() {
 
     const [user, setUser] = useState([]);
@@ -51,9 +53,10 @@ export default function editUserProfile() {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-    const userInfo = localStorage.getItem("userInfo");
-    const search = useLocation().search;
-    const id = new URLSearchParams(search).get('id');
+    const [id, setId] = useState("");
+    // const userInfo = localStorage.getItem("userInfo");
+    // const search = useLocation().search;
+    // const id = new URLSearchParams(search).get('id');
     const classes = useStyles();
 
     function getId(token) {
@@ -73,8 +76,9 @@ export default function editUserProfile() {
 
     useEffect(() => {
         getUser();
-        // getId(userInfo)
-    }, []);
+        const id = localStorage.getItem('userId');
+        setId(id);
+    }, [id]);
 
     const getUser = async () => {
         await axios.get('http://localhost:4000/users/editUser/' + id).then(res => {
